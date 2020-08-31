@@ -1,0 +1,158 @@
+<html lang="en"><head>
+  <script src="p5.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <script src="./libraries/Tone.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+  <meta charset="utf-8">
+
+<style>
+  #controls {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  H1 {
+    text-align: center
+  }
+
+  body {
+    background-color: rgb(220, 220, 250);
+    color: rgb(30, 1, 100);
+  }
+
+  .container {
+    margin: auto;
+    width: 80%;
+
+    font-family: 'Roboto', sans-serif;
+    color: rgb(30, 1, 100);
+
+
+
+    #controls {
+      float: left;
+      color: white;
+      width: 20%;
+
+    }
+
+    #canvas {
+      float: left;
+
+    }
+</style></head>
+
+
+<body>
+  <div class="container"><br><br>
+    <h1 id="title">Cybernetic Mandala</h1>
+
+
+    <div id="canvas">
+    </div>
+    <br>
+    
+    <div id="controls">
+       <button id="create" onclick="create()">
+        Create
+        <br>
+      </button>
+    <button id="restart" class="button button-outline" onclick="restart()">
+        Restart
+        <br>
+      </button>
+      <br>
+      <p style="font-weight: bold; font-size: 30px;">
+        System Rules
+      </p>
+      <p>
+        Rules refer to the number of neighbors a cell has. Especify numbers between 1 and 8. You can puse a comma as an OR operator.
+      </p>
+
+      <div class="born ">
+        <p> Live if </p>
+        <select id="compareborn" style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100); width: 50%;">
+          <option value="equal">Exactly</option>
+          <option value="less">Less than</option>
+          <option value="more">More than</option>
+        </select><input id="borninput" style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100);  width: 50%;" type="text" value="1,2">
+
+      </div>
+
+      <div style="display: none" class="die">
+        <p> Die if </p>
+        <select id="comparedie" style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100); width: 50%;">
+          <option value="more">More than</option>
+          <option value="less">Less than</option>
+          <option value="equal">Exactly</option>
+
+        </select><input style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100);  width: 50%;" id="dieinput" type="text" value="4">
+
+      </div>
+
+      <div style = "display: none" class="survive">
+        <p> Survive if </p>
+        <select id="comparesurvive" style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100); width: 50%;">
+          <option value="equal">Exactly</option>
+          <option value="more">More than</option>
+          <option value="less">Less than</option>
+          
+
+        </select><input style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100);  width: 50%;" id="surviveinput" type="text" value="3">
+
+      </div>
+      <div class="die">
+        <p style="font-weight: bold; font-size: 30px;"> Musical configuration</p>
+        <select id="scale_type" style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100); width: 50%;">
+          <option value="major_pentatonic">Major pentatonic</option>
+          <option value="minor_pentatonic">Minor pentatonic</option>
+          <option value="major_natural">Major scale</option>
+          <option value="minor_natural">Minor scale</option>
+          <option value="major_chord">Major chord</option>
+          <option value="minor_chord">Minor chord</option>
+
+        </select>
+        <select id="midi_note" style="font-family: 'Roboto'; sans-serif; color:rgb(30,1,100);  width: 30%; clear: both;">
+          <option value="60">C</option>
+          <option value="62">D</option>
+          <option value="63">D#</option>
+          <option value="64">E</option>
+          <option value="65">E#</option>
+          <option value="66">F</option>
+          <option value="67">F#</option>
+          <option value="68">G</option>
+          <option value="69">G#</option>
+          <option value="70">G#</option>
+          <option value="71">A</option>
+          <option value="72">A#</option>
+          <option value="73">B</option>
+          <option value="74">B</option>
+        </select>
+        <p>Speed</p>
+        <input type="range" id="framerate" name="framerate" min="60" max="124" value="1" step="0">
+        <p>Roundness</p>
+        <input type="range" id="roundness" name="framerate" min="1" max="30" value="1" step="0">
+        <br>
+
+      </div>
+
+      
+        <br>
+      </button>
+      <br>
+      <br>
+
+    </div>
+  </div>
+  <script src="sketch.js"></script>
+
+
+</body></html>
